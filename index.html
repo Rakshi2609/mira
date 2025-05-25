@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Compass - Your Future Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the body and root elements */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        /* Ensure the root div for React takes full height */
+        #root {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Hide the landing page when the chatbot is active */
+        .hidden-landing {
+            display: none;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+            0% {
+                opacity: 0;
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+            20% {
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+                transform: scale3d(0.9, 0.9, 0.9);
+            }
+            60% {
+                opacity: 1;
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+                transform: scale3d(0.97, 0.97, 0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); /* red-500 */
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+            }
+        }
+
+        /* Apply animations using custom classes */
+        .animate-fadeInScale {
+            animation: fadeInScale 0.6s ease-out forwards;
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+        .animate-bounceIn {
+            animation: bounceIn 0.8s forwards;
+        }
+        .animate-pulseGlow {
+            animation: pulseGlow 2s infinite;
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-red-500 to-orange-600 text-gray-800 flex flex-col min-h-screen">
+
+    <div id="app-container" class="flex-grow flex items-center justify-center p-4">
+        <div id="landing-page" class="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 w-full max-w-2xl mx-auto text-center transform transition-all duration-500 animate-fadeInScale">
+            <div class="mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-compass text-red-600 mx-auto mb-4 p-2 bg-red-100 rounded-full shadow-inner animate-bounceIn">
+                    <path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/>
+                    <circle cx="12" cy="12" r="10"/>
+                </svg>
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4 leading-tight animate-fadeInUp" style="animation-delay: 0.2s;">
+                    Navigate Your Career Path with the help of MIRA
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-prose mx-auto animate-fadeInUp" style="animation-delay: 0.4s;">
+                    Unlock your potential with personalized career advice. Our AI-powered guide is here to help you make informed decisions and achieve your professional goals.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <button id="start-chatbot-button" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-xl flex items-center justify-center space-x-2 shadow-lg transform transition-all duration-200 active:scale-95 text-lg mx-auto animate-pulseGlow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-more">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        <path d="M8 7h.01"/>
+                        <path d="M12 7h.01"/>
+                        <path d="M16 7h.01"/>
+                    </svg>
+                    <a href="https://career-chatbot-ruby.vercel.app/"><span>Get Career Advice Now</span></a>
+                </button>
+                <p class="text-gray-500 text-sm mt-4 animate-fadeInUp" style="animation-delay: 0.6s;">
+                    Powered by cutting-edge AI.
+                </p>
+            </div>
+        </div>
+
+        <div id="chatbot-container" class="hidden w-full flex items-center justify-center animate-fadeInScale">
+            </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-4 text-center text-sm">
+        <div class="container mx-auto px-4">
+            &copy; 2025 <b>MIRA</b>. All rights reserved. |
+            <a href="#" class="hover:text-red-300 transition-colors duration-200">Privacy Policy</a> |
+            <a href="#" class="hover:text-red-300 transition-colors duration-200">Terms of Service</a>
+        </div>
+    </footer>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        // Inline SVG for Lightbulb icon
+        const Lightbulb = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/>
+                <path d="M9 18h6"/>
+                <path d="M10 22h4"/>
+                <path d="M8 22v-2c0-.5.5-1 1-1h6c.5 0 1 .5 1 1v2"/>
+            </svg>
+        );
+
+        // Inline SVG for Send icon
+        const Send = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <path d="m22 2-7 20-4-9-9-4 20-7Z"/>
+                <path d="M15 15l6.5-6.5"/>
+            </svg>
+        );
+
+        // Inline SVG for Loader2 icon
+        const Loader2 = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+            </svg>
+        );
+
+        // Inline SVG for Home icon
+        const HomeIcon = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+        );
+
+
+        // Main App component (from previous immersive)
+        const App = () => {
+            // State variables for user query, AI advice, loading status, and error messages
+            const [query, setQuery] = useState('');
+            const [advice, setAdvice] = useState('');
+            const [isLoading, setIsLoading] = useState(false);
+            const [error, setError] = useState('');
+
+            // Function to handle changes in the input textarea
+            const handleInputChange = (event) => {
+                setQuery(event.target.value);
+                setError(''); // Clear any previous errors when the user starts typing again
+            };
+
+            // Function to fetch career advice from the Gemini API
+            const getCareerAdvice = async () => {
+                if (!query.trim()) {
+                    setError("Please enter your career question to get advice.");
+                    return;
+                }
+
+                setIsLoading(true); // Set loading state to true
+                setAdvice(''); // Clear previous advice
+                setError(''); // Clear previous errors
+
+                try {
+                    // Prepare the prompt for the AI model
+                    const prompt = `Provide concise and actionable career advice for the following question: "${query}". Focus on practical steps and positive outlook.`;
+
+                    // Construct the chat history payload for the Gemini API
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+
+                    // API key for the Gemini API (left empty as per instructions, Canvas provides it)
+                    const apiKey = "";
+                    // API URL for the Gemini 2.0 Flash model
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    // Make the API call to Gemini
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    // Check if the response was successful
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error?.message || `API error: ${response.statusText}`);
+                    }
+
+                    const result = await response.json();
+
+                    // Extract the generated text from the API response
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        setAdvice(text); // Set the received advice
+                    } else {
+                        setError("Could not retrieve advice. Please try again.");
+                    }
+                } catch (err) {
+                    console.error("Failed to fetch career advice:", err);
+                    setError(`Failed to get advice: ${err.message}. Please check your network and try again.`);
+                } finally {
+                    setIsLoading(false); // Set loading state to false regardless of success or failure
+                }
+            };
+
+            // Function to navigate back to the landing page
+            const goHome = () => {
+                const landingPage = document.getElementById('landing-page');
+                const chatbotContainer = document.getElementById('chatbot-container');
+                const appContainer = document.getElementById('app-container');
+
+                chatbotContainer.classList.add('hidden');
+                landingPage.classList.remove('hidden-landing');
+
+                // Adjust app container styling back for landing page
+                appContainer.classList.remove('flex-col');
+                appContainer.classList.add('items-center', 'justify-center');
+
+                // Clear chatbot state when going home
+                setQuery('');
+                setAdvice('');
+                setError('');
+                setIsLoading(false);
+            };
+
+            return (
+                <div className="min-h-screen bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center p-4 font-sans">
+                    <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 w-full max-w-md mx-auto transform transition-all duration-300 hover:scale-105">
+                        <div className="text-center mb-6">
+                            <Lightbulb className="w-16 h-16 text-red-600 mx-auto mb-4 p-2 bg-red-100 rounded-full shadow-inner" />
+                            <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-2">Career Compass</h1>
+                            <p className="text-gray-600 text-lg">Your AI-powered career guide.</p>
+                        </div>
+
+                        <div className="mb-6">
+                            <label htmlFor="career-query" className="block text-gray-700 text-lg font-semibold mb-3">
+                                What career advice are you seeking?
+                            </label>
+                            <textarea
+                                id="career-query"
+                                className="w-full p-4 border border-gray-300 rounded-xl focus:ring-red-500 focus:border-red-500 text-gray-800 text-base resize-y min-h-[100px] shadow-sm transition-all duration-200 focus:shadow-md focus:scale-[1.01]"
+                                placeholder="e.g., 'How can I transition into a new industry?', 'What skills are essential for a project manager?', 'How do I negotiate a salary?'"
+                                value={query}
+                                onChange={handleInputChange}
+                                rows="4"
+                            ></textarea>
+                        </div>
+
+                        {error && (
+                            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl relative mb-6" role="alert">
+                                <strong className="font-bold">Oops! </strong>
+                                <span className="block sm:inline">{error}</span>
+                            </div>
+                        )}
+
+                        <button
+                            onClick={getCareerAdvice}
+                            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center space-x-2 shadow-lg transform transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                            disabled={isLoading}
+                        >
+                            {isLoading ? (
+                                <>
+                                    <Loader2 className="animate-spin h-5 w-5 mr-2" />
+                                    Getting Advice...
+                                </>
+                            ) : (
+                                <>
+                                    <Send className="h-5 w-5" />
+                                    <span>Get Advice</span>
+                                </>
+                            )}
+                        </button>
+
+                        {advice && (
+                            <div className="mt-8 p-6 bg-red-50 rounded-2xl shadow-inner border border-red-200 animate-fadeIn">
+                                <h2 className="text-xl font-semibold text-red-800 mb-4 flex items-center">
+                                    <Lightbulb className="h-6 w-6 mr-2 text-red-600" />
+                                    Your Career Advice:
+                                </h2>
+                                <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">{advice}</p>
+                            </div>
+                        )}
+
+                        {/* Home Button within Chatbot */}
+                        <button
+                            onClick={goHome}
+                            className="mt-6 w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-xl flex items-center justify-center space-x-2 shadow-md transform transition-all duration-200 active:scale-95"
+                        >
+                            <HomeIcon className="h-5 w-5" />
+                            <span>Go Home</span>
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        // JavaScript to handle the transition from landing page to chatbot
+        document.addEventListener('DOMContentLoaded', () => {
+            const startChatbotButton = document.getElementById('start-chatbot-button');
+            const landingPage = document.getElementById('landing-page');
+            const chatbotContainer = document.getElementById('chatbot-container');
+            const appContainer = document.getElementById('app-container');
+
+            startChatbotButton.addEventListener('click', () => {
+                // Hide the landing page
+                landingPage.classList.add('hidden-landing');
+                // Show the chatbot container
+                chatbotContainer.classList.remove('hidden');
+
+                // Adjust app container styling for chatbot content
+                appContainer.classList.remove('items-center', 'justify-center');
+                appContainer.classList.add('flex-col');
+
+                ReactDOM.render(
+                    <App />,
+                    chatbotContainer
+                );
+            });
+        });
+    </script>
+</body>
+</html>
